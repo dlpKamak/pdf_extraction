@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Dec 26 12:03:17 2020
+Need to test for all three input types
+Mention the block issues due to indentations
+two modules 
 
 @author: PreethiK
 """
@@ -17,11 +20,16 @@ with open('parsed_document_Output.json') as f:
 #index for headings present
   for headings in data:
       z = re.match(r"^<h.*>.*|$",headings)
+      z2 = re.match(r"^<p.*>['Course'|'Program']+ Learning ['Objectives'|'Outcomes']+.*",headings)  
       i = i+1
       if z:
           print( (z.group()).strip() , i )
           dict[z.group()] = i
-          
+      if z2:
+          print( (z2.group()).replace("<p>", "<h>") , i )
+          dict[(z2.group()).replace("<p>", "<h>")] = i
+  
+  print("DICTIONARY ITEMS")  
   for (k,v) in dict.items():     
       print(k,v)
  

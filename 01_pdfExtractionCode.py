@@ -5,7 +5,7 @@ import fitz
 import json
 
 
-def fonts(doc, granularity=False):
+def fonts(doc, granularity=True):
     """Extracts fonts and their usage in PDF documents.
     :param doc: PDF document to iterate through
     :type doc: <class 'fitz.fitz.Document'>
@@ -131,7 +131,7 @@ def headers_para(doc, size_tag):
 
 def main():
 
-    document = 'Courseoutline_Input.pdf'
+    document = 'CourseOutline_3.pdf'
     doc = fitz.open(document)
 
     font_counts, styles = fonts(doc, granularity=False)
